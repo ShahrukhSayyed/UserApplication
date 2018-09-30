@@ -1,0 +1,62 @@
+<div class="tab-content cardBorder">
+  <div class="card-body">
+    <div class="text-center">
+      <div>
+        <h3>Family Details </h3>
+      </div>
+    </div>
+
+    <br>
+    <form id="child-details-form" class="form-horizontal" role="form" #childDetailsForm="ngForm">
+
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group form-field-container">
+
+            <mat-form-field>
+              <mat-select placeholder="Select" [(value)]="children">
+                <mat-option *ngFor="let child of childrens" [value]="child.code" (click)="addFieldValue(child.value)">{{child.value}}</mat-option>
+              </mat-select>
+              <mat-hint>* Please select either Son or Daughter</mat-hint>
+
+            </mat-form-field>
+ 
+            <div *ngFor="let field of textboxArray; let i = index">
+              <mat-form-field appearance="standard">
+                <mat-label>{{field.relation}}'s Name</mat-label>
+                <input matInput placeholder="Enter your {{field.relation}}'s Name" [(ngModel)]="field.name" [ngModelOptions]="{standalone: true}" minlength="3" #childName="ngModel" required>
+                <mat-hint>* Min 3 Characters</mat-hint>
+                <span matSuffix (click)="deleteFieldValue(i)" matTooltip="Delete"><i class="fas fa-trash-alt"></i></span>
+
+                <mat-error *ngIf="childName.errors?.required">You must enter a value</mat-error>
+                <mat-error *ngIf="childName.errors?.minlength">You must enter atleast 3 Chars</mat-error>
+  
+              </mat-form-field>
+
+
+            </div>  
+          </div>
+        </div>
+
+      </div>
+
+
+      <br>
+      <div class="row text-center">
+        <div class="col-sm-12 col-md-12">
+          <button type="button" class="btn btn-outline-secondary" [routerLink]="['/user/hobbies-details']">
+            <i class="fas fa-arrow-circle-left"></i> Previous
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-info" (click)="setChildDetailsFunction()" [disabled]="!childDetailsForm.valid">
+            Next <i class="fas fa-arrow-circle-right"></i>
+          </button>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<br>

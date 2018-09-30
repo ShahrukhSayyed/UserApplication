@@ -1,0 +1,52 @@
+<div class="tab-content cardBorder">
+  <div class="card-body">
+    <div class="text-center">
+      <div>
+        <h3>Where do you leave ? </h3>
+      </div>
+    </div>
+
+    <br>
+    <form id="address-details-form" class="form-horizontal" role="form" #addressDetailsForm="ngForm">
+
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group form-field-container">
+
+            <mat-form-field>
+                <mat-label>Street Address</mat-label>
+
+              <textarea matInput placeholder="Please enter your Street Address" [(ngModel)]="address" name="address" required #add="ngModel" minlength="10">
+
+              </textarea>
+
+              <mat-hint>* Min 10 Characters</mat-hint>
+
+              <mat-error *ngIf="add.errors?.required">You must enter a value</mat-error>
+              <mat-error *ngIf="add.errors?.minlength">You must enter atleast 10 Chars</mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <div class="row text-center">
+        <div class="col-sm-12 col-md-12">
+          <button type="button" class="btn btn-outline-secondary rounded" [routerLink]="['/user/child-details']">
+            <i class="fas fa-arrow-circle-left"></i> Previous
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-info rounded" (click)="setAddressDetailsFunction()" [disabled]="!addressDetailsForm.valid">
+            Next <i class="fas fa-arrow-circle-right"></i>
+          </button>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<br>

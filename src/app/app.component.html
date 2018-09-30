@@ -1,0 +1,55 @@
+<br>
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col-12">
+      <ul class="nav nav-tabs flex-row" role="tablist">
+
+        <li class="nav-item" matTooltip="Basic Information">
+          <button class="nav-link rounded-circle"  [disabled]="true" routerLink="/user/basic-details" routerLinkActive="active" data-toggle="tab" >
+            <i class="fas fa-user icons"></i>
+          </button>
+        </li> <!-- End nav-item-basic-->
+
+        <li class="nav-item " matTooltip="Hobbies">
+          <button class="nav-link rounded-circle"  [disabled]="true" routerLink="/user/hobbies-details" routerLinkActive="active" data-toggle="tab">
+            <i class="fas fa-baseball-ball icons"></i>
+          </button>
+        </li><!-- End nav-item-hobbies-->
+
+        <li class="nav-item"  matTooltip="Childrens">
+          <button class="nav-link rounded-circle"  [disabled]="true" routerLink="/user/child-details" routerLinkActive="active" data-toggle="tab">
+            <i class="fas fa-users icons"></i>
+          </button>
+        </li> <!-- End nav-item-childrens-->
+
+        <li class="nav-item" matTooltip="Address">
+          <button class="nav-link rounded-circle"   [disabled]="true" routerLink="/user/address-details" routerLinkActive="active" data-toggle="tab">
+            <i class="fas fa-address-card icons"></i>
+          </button>
+        </li> <!-- End nav-item-address-->
+
+        <li class="nav-item" matTooltip="Final Review">
+          <button class="nav-link rounded-circle" [disabled]="true" routerLink="/user/view-details" routerLinkActive="active" data-toggle="tab">
+            <i class="fas fa-check icons"></i>
+          </button>
+        </li> <!-- End nav-item-finalReview-->
+
+      </ul> <!--End nav-tabs-->
+
+    </div><!--End col-12-->
+
+  </div> <!--End row-->
+
+  <div class="row">
+    <div class="col-12">
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <router-outlet></router-outlet>
+      </div> <!--End tab-content-->
+
+    </div> <!--End col-12-->
+
+  </div><!--End row-->
+
+</div><!--End outer Container-->

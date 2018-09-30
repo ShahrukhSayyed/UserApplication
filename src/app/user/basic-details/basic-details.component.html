@@ -1,0 +1,136 @@
+<div class="tab-content cardBorder">
+  <div class="card-body">
+ 
+    <div class="text-center">
+      <div>
+        <h3>Please tell us about yourself </h3>
+      </div>
+    </div>
+
+    <br>
+    <form id="basic-details-form" class="form-horizontal" role="form" #basicDetailsForm="ngForm">
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group form-field-container">
+
+            <mat-form-field appearance="standard">
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="Enter your First Name" minlength="3" #fstName="ngModel" [(ngModel)]="firstName" name="firstName" required>
+              <mat-hint>* Min 3 Characters</mat-hint>
+
+              <mat-error *ngIf="fstName.errors?.required">You must enter a value</mat-error>
+              <mat-error *ngIf="fstName.errors?.minlength">You must enter atleast 3 Chars</mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group form-field-container">
+            <mat-form-field appearance="standard">
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Enter your Last Name" minlength="3" #lstName="ngModel" [(ngModel)]="lastName" name="lastName" required>
+              <mat-hint>* Min 3 Characters</mat-hint>
+
+              <mat-error *ngIf="lstName.errors?.required">You must enter a value</mat-error>
+              <mat-error *ngIf="lstName.errors?.minlength">You must enter atleast 3 Chars</mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group form-field-container">
+
+            <mat-form-field>
+              <input matInput placeholder="Enter your email" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group form-field-container">
+
+            <mat-form-field>
+              <mat-select placeholder="Select Country Name" [(value)]="country" (selectionChange)="onChangeOfCountry()" required>
+                <mat-option *ngFor="let country of countries" [value]="country.code" >{{country.name}}</mat-option>
+              </mat-select>
+
+            </mat-form-field>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group form-field-container">
+            <mat-form-field>
+              <input matInput placeholder="Mobile Number" type="number" class="example-right-align" [(ngModel)]="mobileNumber" 
+                name="mobileNumber" pattern="^\d{10}$" maxlength="10" #mobNumber="ngModel" required >          
+
+                <span matPrefix>+{{countryCode}} &nbsp;</span>
+
+
+              <mat-hint>* Max 10 Digits</mat-hint>
+
+              <mat-error *ngIf="mobNumber.errors?.required">You must enter a value</mat-error>
+              <mat-error *ngIf="mobNumber.errors?.pattern">Only 10 Digits</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group form-field-container">
+
+            <mat-label>Gender</mat-label>
+            <mat-radio-group [(ngModel)]="selectedGender" name="selectedGender" required>
+
+              <mat-radio-button *ngFor="let gender of genders" [value]="gender" >
+                {{gender}}
+              </mat-radio-button>
+
+            </mat-radio-group>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group form-field-container">
+            <mat-label>Marital Status</mat-label>
+
+            <mat-radio-group [(ngModel)]="selectedmaritalStatus" name="selectedmaritalStatus" required>
+                <mat-radio-button *ngFor="let status of maritalStatuses" [value]="status">
+                    {{status}}
+                  </mat-radio-button>
+                </mat-radio-group>
+          </div>
+        </div>
+
+      </div>
+      
+      <br>
+      <div class="row text-center">
+        <div class="col-sm-12 col-md-12">
+          <button type="button" class="btn btn-info rounded" (click)="setBasicDetailsFunction()" [disabled]="!basicDetailsForm.valid">
+            Next <i class="fas fa-arrow-circle-right"></i>
+          </button>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<br>

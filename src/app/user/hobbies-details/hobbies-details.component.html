@@ -1,0 +1,61 @@
+<div class="tab-content cardBorder">
+  <div class="card-body">
+
+    <div class="text-center">
+      <div>
+        <h3>Let us know your Hobbies </h3>
+      </div>
+    </div>
+
+    <br>
+    <form id="hobbies-details-form" class="form-horizontal" role="form" #hobbiesDetailsForm="ngForm">
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group form-field-container">
+            <mat-form-field>
+              <mat-select placeholder="Hobbies" [formControl]="hobbies" multiple >
+                <mat-option *ngFor="let hobby of hobbiesList" [value]="hobby">{{hobby}}</mat-option>
+              </mat-select>      
+            </mat-form-field>
+
+            <mat-checkbox [(ngModel)]="other" name="other">Other</mat-checkbox>
+
+
+
+            <div *ngIf="other">
+              <mat-form-field appearance="standard">
+                <mat-label>Hobby</mat-label>
+                <input matInput placeholder="Enter Your Hobby" #hobbyName="ngModel" [(ngModel)]="enteredHobby" name="enteredHobby" (keydown)="addUsingKeypress($event)" minlength="3" required>
+                <mat-hint>* Press Enter after inserting your hobby and select it from the above list</mat-hint>
+
+                <mat-error *ngIf="hobbyName.errors?.required">You must enter a value</mat-error>
+                <mat-error *ngIf="hobbyName.errors?.minlength">You must enter atleast 3 Chars</mat-error>
+  
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+      <div class="row text-center">
+        <div class="col-sm-12 col-md-12">
+          <button type="button" class="btn btn-outline-secondary rounded" [routerLink]="['/user/basic-details']">
+            <i class="fas fa-arrow-circle-left"></i> Previous
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-info rounded" (click)="setHobbiesDetailsFunction()" [disabled]="!hobbiesDetailsForm.valid">
+            Next <i class="fas fa-arrow-circle-right"></i>
+          </button>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<br>
